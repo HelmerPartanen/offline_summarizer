@@ -325,6 +325,19 @@ def read_feedback_endpoint():
             return {"feedback": f.readlines()}
     return {"feedback": [], "path": os.path.abspath(feedback_file)}
 
+
+@app.get("/feedback/stats")
+def feedback_stats_endpoint():
+    try:
+        from training.prepare_feedback import get_feedback_stats
+
+        feedback_file = os.path.join(PROJECT_ROOT, "data", "feedback", "feedback.jsonl")
+        manifest_file = os.path.join(PROJECT_ROOT, "data", "feedback", "training_manifest.json")
+        stats = get_feedback_stats(feedback_file, manifest_file)
+        return {"stats": stats}
+    except Exception as e:
+        return {"error": str(e)}
+
 @app.get("/")
 def read_root():
     return {"message": "Offline Summarizer API is running."}

@@ -127,3 +127,12 @@ export async function getEvaluationHistory(limit = 10) {
     }
     return response.json();
 }
+
+
+export async function getFeedbackStats() {
+    const response = await fetch(`${API_BASE}/feedback/stats`);
+    if (!response.ok) {
+        throw new Error("Failed to fetch feedback stats");
+    }
+    return response.json();
+}
