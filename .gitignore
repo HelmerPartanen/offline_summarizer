@@ -1,0 +1,32 @@
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Frontend build artifacts
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Training/runtime artifacts
+exports/
+data/evaluation/
+data/processed/
+data/feedback/dpo_dataset.json
+data/feedback/dpo_dataset_incremental.json
+data/feedback/training_manifest.json
+
+# Model run outputs (very large)
+models/**
+!models/
+!models/active_model.txt
+!models/active_dpo_model.txt
+models/cnn_model_runs/
+models/dpo_model_runs/
+models/sft_model_runs/
+models/sft_auto_work/
+
+# Local env/editor
+.venv/
+.vscode/
+.DS_Store
+Thumbs.db
